@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="src.main.java.com.csp.dao.StudentDao">
+	<!-- 目的：为dao接口方法提供sql语句配置 -->
+	<select id="findStudentById" resultType="Student" parameterType="long">
+		<!-- 具体的sql -->
+		SELECT
+			s_id,
+			s_name,
+			s_bunk,
+			s_status
+		FROM
+			student
+		WHERE
+			s_id = #{id}
+	</select>
+	
+	<select id="findStudents" resultType="Student">
+		SELECT
+			s_id,
+			s_name,
+			s_bunk,
+			s_status
+		FROM
+			student
+		ORDER BY
+			s_id
+		LIMIT #{offset}, #{limit}
+	</select>
+	
+</mapper>
