@@ -4,8 +4,8 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="src.main.java.com.csp.dao.StudentDao">
 	<!-- 目的：为dao接口方法提供sql语句配置 -->
-	<select id="findStudentById" resultType="Student" parameterType="long">
-		<!-- 具体的sql -->
+	<!-- <select id="findStudentById" resultType="Student" parameterType="String">
+		
 		SELECT
 			s_id,
 			s_name,
@@ -14,7 +14,7 @@
 		FROM
 			student
 		WHERE
-			s_id = #{id}
+			s_id = #{s_id};
 	</select>
 	
 	<select id="findStudents" resultType="Student">
@@ -27,7 +27,23 @@
 			student
 		ORDER BY
 			s_id
-		LIMIT #{offset}, #{limit}
+		LIMIT #{offset}, #{limit};
 	</select>
 	
+	<insert id="addStudent" parameterType="Student">
+		INSERT INTO Student (s_id,s_name,s_bunk,s_status)
+		VALUES (#{s_id},#{s_name},#{s_bunk},#{s_status});
+	</insert>
+	
+	<update id="updateStudent" parameterType="Student">
+		UPDATE Student
+		SET Student.s_name=#{s_name},
+			Student.s_bunk=#{s_bunk},
+			Student.s_status=#{s_status}
+		WHERE Student.s_id=#{s_id};
+	</update>
+	
+	<delete	id="deleteStudent" parameterType="String">
+		DELETE FROM Student WHERE s_id = #{s_id};
+	</delete>  -->
 </mapper>
