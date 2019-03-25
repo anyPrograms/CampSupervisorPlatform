@@ -4,7 +4,7 @@ CREATE TABLE `student` (
   `s_id` varchar(10) NOT NULL COMMENT '营员ID',
   `s_name` varchar(20) NOT NULL COMMENT '营员名称',
   `s_bunk` varchar(20) NOT NULL COMMENT '营员bunk',
-  `s_status` varchar(2) NOT NULL COMMENT '营员状态' DEFAULT '1' , --0 未参加  1 正常参加  2 外出就医  3 意外退出
+  `s_status` varchar(2) NOT NULL COMMENT '营员状态' DEFAULT '1' , /*0 未参加  1 正常参加  2 外出就医  3 意外退出*/
   PRIMARY KEY (`s_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='营员表';
 
@@ -74,7 +74,7 @@ DROP TABLE IF EXISTS `bunk`;
 CREATE TABLE `bunk` (
   `b_id` varchar(11) NOT NULL COMMENT 'bunkID',
   `b_name` varchar(20) NOT NULL COMMENT 'bunk名称',
-  PRIMARY KEY (`st_id`)
+  PRIMARY KEY (`b_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='bunk表';
 
 /* b_id生成策略 时间戳	*/
@@ -85,7 +85,7 @@ CREATE TABLE `elective` (
   `e_id` varchar(7) NOT NULL COMMENT 'electiveID',
   `e_name` varchar(20) NOT NULL COMMENT 'elective名称',
   `e_vol` int COMMENT 'elective容量',
-  PRIMARY KEY (`st_id`)
+  PRIMARY KEY (`e_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective表';
 
 /* e_id 生成策略
