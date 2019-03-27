@@ -24,7 +24,7 @@ public class StudentService {
 		return allSt;
 	}
 	
-	public String addStudent(String s_name,String s_gender,String s_year,String s_status,String s_age) {
+	public Student addStudent(String s_name,String s_gender,String s_year,String s_status,String s_age) {
 		Student st = new Student();
 		st.setS_name(s_name);
 		st.setS_status(s_status);
@@ -41,11 +41,17 @@ public class StudentService {
 		if(id.equals(null)) {
 			id="001";
 		}else {
-			id=id.substring(id.length()-3, id.length())	;
+			id=id.substring(id.length()-3, id.length());
+			int tmp = Integer.parseInt(id)+1;
+			id = String.valueOf(tmp);
+			while(3-id.length()>0){
+				id="0"+id;
+			}
 		}
 		String s_id = "S"+s_year+s_age+s_gender+id;
-		
-		return "";
+		st.setS_id(s_id);
+		studentDao.addStudent(s_id, s_name, "", s_status);
+		return st;
 	}
 	
 }
