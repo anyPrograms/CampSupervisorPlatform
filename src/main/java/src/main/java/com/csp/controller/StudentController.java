@@ -2,6 +2,8 @@ package src.main.java.com.csp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,15 +24,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping("/book") 
+@RequestMapping("/con/student/") 
 public class StudentController {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private StudentService bookService;
+	private StudentService studentService;
 
 
+	@RequestMapping(value = "all", method = RequestMethod.GET)
+	public @ResponseBody List<Student> getDataSource(Model model,
+			HttpServletRequest request) throws Exception {
+		return studentService.findAllStudent();
+	}
 
 
 

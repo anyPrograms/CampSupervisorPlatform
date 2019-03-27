@@ -12,9 +12,14 @@ import src.main.java.com.csp.entity.Student;
 
 public interface StudentDao {
 
-
 	@Select("SELECT * FROM Student WHERE s_id = #{s_id};")
 	public Student findStudentById(@Param("s_id") String s_id);
+
+	@Select("SELECT MAX(CAST(s_id as UNSIGNED INTEGER)) FROM Student;")
+	public String findLastStudentId();
+	
+	@Select("SELECT * FROM Student;")
+	public List<Student> findAllStudents();
 
 	@Select("SELECT * FROM Student ORDER BY s_id LIMIT #{offset}, #{limit};")
 	public List<Student> findStudents(@Param("offset") int offset, @Param("limit") int limit);
