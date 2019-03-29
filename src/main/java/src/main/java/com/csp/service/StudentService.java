@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import src.main.java.com.csp.dao.StudentDao;
 import src.main.java.com.csp.entity.Student;
@@ -24,6 +25,7 @@ public class StudentService {
 		return allSt;
 	}
 	
+	@Transactional
 	public Student addStudent(String s_name,String s_gender,String s_year,String s_status,String s_age) {
 		Student st = new Student();
 		st.setS_name(s_name);
@@ -53,5 +55,11 @@ public class StudentService {
 		studentDao.addStudent(s_id, s_name, "", s_status);
 		return st;
 	}
+	
+	@Transactional
+	public void deleteStudentById(String s_id) {
+		studentDao.deleteStudent(s_id);//待改 需删除挂在sb se map下的student
+	}
+	
 	
 }

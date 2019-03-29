@@ -37,7 +37,7 @@ public class StudentController {
 
 
 	@RequestMapping(value = "all", method = RequestMethod.GET)
-	public @ResponseBody List<Student> getDataSource(Model model,
+	public @ResponseBody List<Student> findAllStudents(Model model,
 			HttpServletRequest request) throws Exception {
 		return studentService.findAllStudent();
 	}
@@ -65,4 +65,19 @@ public class StudentController {
 		return responseMessage;
 	}
 
+	@RequestMapping(value = "deleteById/{s_id}", method = RequestMethod.POST)
+	public Object deleteById(Model model,
+			HttpServletRequest request,@PathVariable String s_id) throws Exception {
+		Map responseMessage = new HashMap();
+		responseMessage.put("success", true);
+		try {
+			studentService.deleteStudentById(s_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String responseBody = "操作失败！"+e.getMessage();
+			responseMessage.put("msg", responseBody);
+			responseMessage.put("success", false);
+		}
+		return responseMessage;
+	}
 }

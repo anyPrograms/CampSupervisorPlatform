@@ -16,7 +16,7 @@ public class Counselor {
 
 	private String c_name;// Counselor名称
 
-	private Bunk c_bunk;
+	private String c_bunk;
 	
 	private String c_intro;
 

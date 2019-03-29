@@ -18,6 +18,9 @@ public interface BunkDao {
     @Select("SELECT * FROM Bunk WHERE b_id = #{b_id};")
     public Bunk findBunkById(@Param("b_id") String b_id);
 
+	@Select("SELECT * FROM Bunk;")
+	public List<Bunk> findAllBunks();
+	
     @Select("SELECT * FROM Bunk ORDER BY b_id LIMIT #{offset}, #{limit};")
     public List<Bunk> findBunks(@Param("offset") int offset, @Param("limit") int limit);
 
