@@ -5,11 +5,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import org.apache.ibatis.annotations.Select;
-import src.main.java.com.csp.entity.Counselor;
+import org.springframework.stereotype.Repository;
 
+import src.main.java.com.csp.entity.Counselor;
+@Repository
+@Mapper
 public interface CounselorDao {
 
 
