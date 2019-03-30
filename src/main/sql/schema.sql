@@ -9,12 +9,13 @@ CREATE TABLE `student` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='营员表';
 
 /*  s_id 生成策略
+ * 	身份 S
 	年份 2019
 	年龄段 1 2 3
 	性别 0 1
 	序号 001
 	
-例：201911001  2019年小龄段男生01号
+例：S201911001  营员2019年小龄段男生01号
 */
 
 -- 创建counselor表
@@ -72,7 +73,7 @@ CREATE TABLE `staff` (
 -- 创建bunk表
 DROP TABLE IF EXISTS `bunk`;
 CREATE TABLE `bunk` (
-  `b_id` varchar(11) NOT NULL COMMENT 'bunkID',
+  `b_id` varchar(14) NOT NULL COMMENT 'bunkID',
   `b_name` varchar(20) NOT NULL COMMENT 'bunk名称',
   PRIMARY KEY (`b_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='bunk表';
@@ -113,14 +114,14 @@ CREATE TABLE `student_elective_map`  (
 DROP TABLE IF EXISTS `counselor_bunk_map`;
 CREATE TABLE `counselor_bunk_map`  (
   `c_id` varchar(11)  NOT NULL,
-  `b_id` varchar(11) NOT NULL,
+  `b_id` varchar(14) NOT NULL,
   PRIMARY KEY (`c_id`, `b_id`) USING BTREE
 ) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='c_b_map 表';
 
 DROP TABLE IF EXISTS `student_bunk_map`;
 CREATE TABLE `student_bunk_map`  (
   `s_id` varchar(10)  NOT NULL,
-  `b_id` varchar(11) NOT NULL,
+  `b_id` varchar(14) NOT NULL,
   PRIMARY KEY (`s_id`, `b_id`) USING BTREE
 ) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='s_b_map 表';
 SET FOREIGN_KEY_CHECKS = 1;
