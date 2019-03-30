@@ -18,16 +18,16 @@ import src.main.java.com.csp.entity.Elective;
 public interface ElectiveDao {
 
 
-    @Select("SELECT * FROM Elective WHERE elective_id = #{electiveId};")
+    @Select("SELECT * FROM elective WHERE elective_id = #{electiveId};")
     public Elective findElectiveById(@Param("electiveId") String electiveId);
 
-    @Select("SELECT * FROM Elective ORDER BY elective_id LIMIT #{offset}, #{limit};")
+    @Select("SELECT * FROM elective ORDER BY elective_id LIMIT #{offset}, #{limit};")
     public List<Elective> findElectives(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO Elective (elective_id,elective_name,elective_vol) VALUES (#{electiveId},#{electiveName},#{electiveVol});")
+    @Insert("INSERT INTO elective (elective_id,elective_name,elective_vol) VALUES (#{electiveId},#{electiveName},#{electiveVol});")
     public void addElective(@Param("electiveId") String electiveId,@Param("electiveName") String electiveName,@Param("electiveVol") String electiveVol);
 
-    @Delete("DELETE FROM Elective WHERE elective_id = #{electiveId};")
+    @Delete("DELETE FROM elective WHERE elective_id = #{electiveId};")
     public void deleteElective(@Param("electiveId") String electiveId);
 
 }

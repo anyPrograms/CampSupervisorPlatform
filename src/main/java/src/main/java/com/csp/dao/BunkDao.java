@@ -16,19 +16,19 @@ import src.main.java.com.csp.entity.Bunk;
 @Mapper
 public interface BunkDao {
 
-    @Select("SELECT * FROM Bunk WHERE bunk_id = #{bunkId};")
+    @Select("SELECT * FROM bunk WHERE bunk_id = #{bunkId};")
     public Bunk findBunkById(@Param("bunkId") String bunkId);
 
-	@Select("SELECT * FROM Bunk;")
+	@Select("SELECT * FROM bunk;")
 	public List<Bunk> findAllBunks();
 	
-    @Select("SELECT * FROM Bunk ORDER BY bunk_id LIMIT #{offset}, #{limit};")
+    @Select("SELECT * FROM bunk ORDER BY bunk_id LIMIT #{offset}, #{limit};")
     public List<Bunk> findBunks(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO Bunk (bunk_id,bunk_name) VALUES (#{bunkId},#{bunkName});")
+    @Insert("INSERT INTO bunk (bunk_id,bunk_name) VALUES (#{bunkId},#{bunkName});")
     public void addBunk(@Param("bunkId") String bunkId,@Param("bunkName") String bunkName);
 
-    @Delete("DELETE FROM Bunk WHERE bunk_id = #{bunkId};")
+    @Delete("DELETE FROM bunk WHERE bunk_id = #{bunkId};")
     public void deleteBunk(@Param("bunkId") String bunkId);
 
 
