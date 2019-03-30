@@ -43,7 +43,7 @@ public class BunkService {
 	}
 	
 	@Transactional
-	public void deleteBunk(String s_id) {
+	public void deleteBunkById(String s_id) {
 		bunkDao.deleteBunk(s_id);//待改 增加判断  bunk下挂有stu counselor的不能删除
 	}
 	
