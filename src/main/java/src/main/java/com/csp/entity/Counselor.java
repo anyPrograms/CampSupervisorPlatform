@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Counselor {
 
-	private String c_id;// CounselorID
+	private String counselorId;// CounselorID
 
-	private String c_name;// Counselor名称
+	private String counselorName;// Counselor名称
 
-	private String c_bunk;
+	private String counselorBunk;
 	
-	private String c_intro;
+	private String counselorIntro;
 
 }

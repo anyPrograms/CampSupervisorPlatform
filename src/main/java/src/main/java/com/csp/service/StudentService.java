@@ -15,23 +15,23 @@ public class StudentService {
 	@Autowired
 	private StudentDao studentDao;
 	
-	public Student findStudentById(String s_id) {
-		Student st = studentDao.findStudentById(s_id);
+	public Student findStudentById(String studentId) {
+		Student st = studentDao.findStudentById(studentId);
 		return st;
 	}
 	
-	public List<Student> findAllStudent() {
+	public List<Student> findAllStudents() {
 		List<Student> allSt = studentDao.findAllStudents();
 		return allSt;
 	}
 	
 	@Transactional
-	public Student addStudent(String s_name,String s_gender,String s_year,String s_status,String s_age) {
+	public Student addStudent(String studentName,String studentGender,String studentYear,String studentStatus,String studentAge) {
 		Student st = new Student();
-		st.setS_name(s_name);
-		st.setS_status(s_status);
+		st.setStudentName(studentName);
+		st.setStudentStatus(studentStatus);
 		
-		/*  s_id 生成策略
+		/*  studentId 生成策略
 			年份 2019
 			年龄段 1 2 3
 			性别 0 1
@@ -50,15 +50,15 @@ public class StudentService {
 				id="0"+id;
 			}
 		}
-		String s_id = "S"+s_year+s_age+s_gender+id;
-		st.setS_id(s_id);
-		studentDao.addStudent(s_id, s_name, "", s_status);
+		String studentId = "S"+studentYear+studentAge+studentGender+id;
+		st.setStudentId(studentId);
+		studentDao.addStudent(studentId, studentName, "", studentStatus);
 		return st;
 	}
 	
 	@Transactional
-	public void deleteStudentById(String s_id) {
-		studentDao.deleteStudent(s_id);//待改 需删除挂在sb se map下的student
+	public void deleteStudentById(String studentId) {
+		studentDao.deleteStudent(studentId);//待改 需删除挂在sb se map下的student
 	}
 	
 	

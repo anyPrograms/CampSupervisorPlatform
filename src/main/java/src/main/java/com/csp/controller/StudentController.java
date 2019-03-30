@@ -39,22 +39,22 @@ public class StudentController {
 	@RequestMapping(value = "all", method = RequestMethod.GET)
 	public @ResponseBody List<Student> findAllStudents(Model model,
 			HttpServletRequest request) throws Exception {
-		return studentService.findAllStudent();
+		return studentService.findAllStudents();
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public @ResponseBody Object addStudent(Model model,HttpServletRequest request,
-			@RequestParam (value = "s_name", defaultValue = "") final String s_name,
-			@RequestParam (value = "s_gender", defaultValue = "") final String s_gender,
-			@RequestParam (value = "s_year", defaultValue = "") final String s_year,
-			@RequestParam (value = "s_status", defaultValue = "") final String s_status,
-			@RequestParam (value = "s_age", defaultValue = "") final String s_age
+			@RequestParam (value = "studentName", defaultValue = "") final String studentName,
+			@RequestParam (value = "studentGender", defaultValue = "") final String studentGender,
+			@RequestParam (value = "studentYear", defaultValue = "") final String studentYear,
+			@RequestParam (value = "studentStatus", defaultValue = "") final String studentStatus,
+			@RequestParam (value = "studentAge", defaultValue = "") final String studentAge
 			) throws Exception {
 		String responseBody = "";
 		Map responseMessage = new HashMap();
 		responseMessage.put("success", true);
 		try{
-			Student stuRe =studentService.addStudent(s_name, s_gender, s_year, s_status, s_age);
+			Student stuRe =studentService.addStudent(studentName, studentGender, studentYear, studentStatus, studentAge);
 			responseMessage.put("stu", stuRe);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -65,13 +65,13 @@ public class StudentController {
 		return responseMessage;
 	}
 
-	@RequestMapping(value = "deleteById/{s_id}", method = RequestMethod.POST)
+	@RequestMapping(value = "deleteById/{studentId}", method = RequestMethod.POST)
 	public Object deleteById(Model model,
-			HttpServletRequest request,@PathVariable String s_id) throws Exception {
+			HttpServletRequest request,@PathVariable String studentId) throws Exception {
 		Map responseMessage = new HashMap();
 		responseMessage.put("success", true);
 		try {
-			studentService.deleteStudentById(s_id);
+			studentService.deleteStudentById(studentId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			String responseBody = "操作失败！"+e.getMessage();

@@ -17,34 +17,34 @@ public class BunkService {
 	@Autowired
 	private BunkDao bunkDao;
 	
-	public Bunk findBunkById(String s_id) {
-		Bunk st = bunkDao.findBunkById(s_id);
+	public Bunk findBunkById(String bunkId) {
+		Bunk st = bunkDao.findBunkById(bunkId);
 		return st;
 	}
 	
-	public List<Bunk> findAllBunk() {
+	public List<Bunk> findAllBunks() {
 		List<Bunk> allSt = bunkDao.findAllBunks();
 		return allSt;
 	}
 	
-	public Bunk addBunk(String b_name) {
+	public Bunk addBunk(String bunkName) {
 		Bunk bk = new Bunk();
-		bk.setB_name(b_name);
+		bk.setBunkName(bunkName);
 		
-		/*  b_id 生成策略
+		/*  bunkId 生成策略
 			时间戳
 		*/
 		Date d = new Date();
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-		String b_id = df.format(d.getTime());
-		bk.setB_id(b_id);
-		bunkDao.addBunk(b_id, b_name);
+		String bunkId = df.format(d.getTime());
+		bk.setBunkId(bunkId);
+		bunkDao.addBunk(bunkId, bunkName);
 		return bk;
 	}
 	
 	@Transactional
-	public void deleteBunkById(String s_id) {
-		bunkDao.deleteBunk(s_id);//待改 增加判断  bunk下挂有stu counselor的不能删除
+	public void deleteBunkById(String bunkId) {
+		bunkDao.deleteBunk(bunkId);//待改 增加判断  bunk下挂有stu counselor的不能删除
 	}
 	
 	//待加 模糊查询

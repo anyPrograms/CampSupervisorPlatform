@@ -12,12 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Student {
 
-	private String s_id;// 学生ID
+	private String studentId;// 学生ID
 
-	private String s_name;// 学生名称
+	private String studentName;// 学生名称
 
-	private String s_bunk;
+	private String studentBunk;
 	
-	private String s_status;//0 未参加  1 正常参加  2 外出就医  3 意外退出
+	private String studentStatus;//0 未参加  1 正常参加  2 外出就医  3 意外退出
 
 }

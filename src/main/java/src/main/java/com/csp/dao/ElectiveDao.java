@@ -18,16 +18,16 @@ import src.main.java.com.csp.entity.Elective;
 public interface ElectiveDao {
 
 
-    @Select("SELECT * FROM Elective WHERE e_id = #{e_id};")
-    public Elective findElectiveById(@Param("e_id") String e_id);
+    @Select("SELECT * FROM Elective WHERE elective_id = #{electiveId};")
+    public Elective findElectiveById(@Param("electiveId") String electiveId);
 
-    @Select("SELECT * FROM Elective ORDER BY e_id LIMIT #{offset}, #{limit};")
+    @Select("SELECT * FROM Elective ORDER BY elective_id LIMIT #{offset}, #{limit};")
     public List<Elective> findElectives(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO Elective (e_id,e_name,e_vol) VALUES (#{e_id},#{e_name},#{e_vol});")
-    public void addElective(@Param("e_id") String e_id,@Param("e_name") String e_name,@Param("e_vol") String e_vol);
+    @Insert("INSERT INTO Elective (elective_id,elective_name,elective_vol) VALUES (#{electiveId},#{electiveName},#{electiveVol});")
+    public void addElective(@Param("electiveId") String electiveId,@Param("electiveName") String electiveName,@Param("electiveVol") String electiveVol);
 
-    @Delete("DELETE FROM Elective WHERE e_id = #{e_id};")
-    public void deleteElective(@Param("e_id") String e_id);
+    @Delete("DELETE FROM Elective WHERE elective_id = #{electiveId};")
+    public void deleteElective(@Param("electiveId") String electiveId);
 
 }

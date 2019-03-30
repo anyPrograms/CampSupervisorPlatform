@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Bunk {
 
-	private String b_id;// BunkID
+	private String bunkId;// BunkID
 
-	private String b_name;// bunk名称
+	private String bunkName;// bunk名称
 
 }

@@ -17,17 +17,17 @@ import src.main.java.com.csp.entity.Director;
 public interface DirectorDao {
 
 
-    @Select("SELECT * FROM Director WHERE d_id = #{d_id};")
-    public Director findDirectorById(@Param("d_id") String d_id);
+    @Select("SELECT * FROM Director WHERE director_id = #{directorId};")
+    public Director findDirectorById(@Param("directorId") String directorId);
 
-    @Select("SELECT * FROM Director ORDER BY d_id LIMIT #{offset}, #{limit};")
+    @Select("SELECT * FROM Director ORDER BY director_id LIMIT #{offset}, #{limit};")
     public List<Director> findDirectors(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO Director (d_id,d_name) VALUES (#{d_id},#{d_name});")
-    public void addDirector(@Param("d_id") String d_id,@Param("d_name") String d_name);
+    @Insert("INSERT INTO Director (director_id,director_name) VALUES (#{directorId},#{directorName});")
+    public void addDirector(@Param("directorId") String directorId,@Param("directorName") String directorName);
 
-    @Delete("DELETE FROM Director WHERE d_id = #{d_id};")
-    public void deleteDirector(@Param("d_id") String d_id);
+    @Delete("DELETE FROM Director WHERE director_id = #{directorId};")
+    public void deleteDirector(@Param("directorId") String directorId);
 
 
 }

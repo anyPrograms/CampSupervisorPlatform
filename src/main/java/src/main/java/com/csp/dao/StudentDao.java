@@ -17,22 +17,22 @@ import src.main.java.com.csp.entity.Student;
 @Mapper
 public interface StudentDao {
 
-	@Select("SELECT * FROM student WHERE s_id = #{s_id};")
-	public Student findStudentById(@Param("s_id") String s_id);
+	@Select("SELECT * FROM student WHERE student_id = #{studentId};")
+	public Student findStudentById(@Param("studentId") String studentId);
 
-	@Select("SELECT MAX(CAST(s_id as UNSIGNED INTEGER)) FROM student;")
+	@Select("SELECT MAX(CAST(student_id as UNSIGNED INTEGER)) FROM student;")
 	public String findLastStudentId();
 	
 	@Select("SELECT * FROM student;")
 	public List<Student> findAllStudents();
 
-	@Select("SELECT * FROM student ORDER BY s_id LIMIT #{offset}, #{limit};")
+	@Select("SELECT * FROM student ORDER BY student_id LIMIT #{offset}, #{limit};")
 	public List<Student> findStudents(@Param("offset") int offset, @Param("limit") int limit);
 
-	@Insert("INSERT INTO Student (s_id,s_name,s_bunk,s_status) VALUES (#{s_id},#{s_name},#{s_bunk},#{s_status});")
-	public void addStudent(@Param("s_id") String s_id,@Param("s_name") String s_name,@Param("s_bunk") String s_bunk,@Param("s_id") String s_status);
+	@Insert("INSERT INTO student (student_id,student_name,student_bunk,student_status) VALUES (#{studentId},#{studentName},#{studentBunk},#{studentStatus});")
+	public void addStudent(@Param("studentId") String studentId,@Param("studentName") String studentName,@Param("studentBunk") String studentBunk,@Param("studentStatus") String studentStatus);
 	
-	@Delete("DELETE FROM Student WHERE s_id = #{s_id};")
-	public void deleteStudent(@Param("s_id") String s_id);
+	@Delete("DELETE FROM student WHERE student_id = #{studentId};")
+	public void deleteStudent(@Param("studentId") String studentId);
 
 }

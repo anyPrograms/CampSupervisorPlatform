@@ -38,18 +38,18 @@ public class BunkController {
 	@RequestMapping(value = "all", method = RequestMethod.GET)
 	public @ResponseBody List<Bunk> findAllBunks(Model model,
 			HttpServletRequest request) throws Exception {
-		return bunkService.findAllBunk();
+		return bunkService.findAllBunks();
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public @ResponseBody Object addBunk(Model model,HttpServletRequest request,
-			@RequestParam (value = "b_name", defaultValue = "") final String b_name
+			@RequestParam (value = "bunkName", defaultValue = "") final String bunkName
 			) throws Exception {
 		String responseBody = "";
 		Map responseMessage = new HashMap();
 		responseMessage.put("success", true);
 		try{
-			Bunk bkRe =bunkService.addBunk(b_name);
+			Bunk bkRe =bunkService.addBunk(bunkName);
 			responseMessage.put("bunk", bkRe);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -60,13 +60,13 @@ public class BunkController {
 		return responseMessage;
 	}
 
-	@RequestMapping(value = "deleteById/{b_id}", method = RequestMethod.POST)
+	@RequestMapping(value = "deleteById/{bunkId}", method = RequestMethod.POST)
 	public Object deleteBunkById(Model model,
-			HttpServletRequest request,@PathVariable String b_id) throws Exception {
+			HttpServletRequest request,@PathVariable String bunkId) throws Exception {
 		Map responseMessage = new HashMap();
 		responseMessage.put("success", true);
 		try {
-			bunkService.deleteBunkById(b_id);
+			bunkService.deleteBunkById(bunkId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			String responseBody = "操作失败！"+e.getMessage();

@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Director {
 
-	private String d_id;// DirectorID
+	private String directorId;// DirectorID
 
-	private String d_name;// Director名称
+	private String directorName;// Director名称
 
 }

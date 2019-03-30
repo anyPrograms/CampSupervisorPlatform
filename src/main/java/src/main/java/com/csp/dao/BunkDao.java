@@ -16,20 +16,20 @@ import src.main.java.com.csp.entity.Bunk;
 @Mapper
 public interface BunkDao {
 
-    @Select("SELECT * FROM Bunk WHERE b_id = #{b_id};")
-    public Bunk findBunkById(@Param("b_id") String b_id);
+    @Select("SELECT * FROM Bunk WHERE bunk_id = #{bunkId};")
+    public Bunk findBunkById(@Param("bunkId") String bunkId);
 
 	@Select("SELECT * FROM Bunk;")
 	public List<Bunk> findAllBunks();
 	
-    @Select("SELECT * FROM Bunk ORDER BY b_id LIMIT #{offset}, #{limit};")
+    @Select("SELECT * FROM Bunk ORDER BY bunk_id LIMIT #{offset}, #{limit};")
     public List<Bunk> findBunks(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO Bunk (b_id,b_name) VALUES (#{b_id},#{b_name});")
-    public void addBunk(@Param("b_id") String b_id,@Param("b_name") String b_name);
+    @Insert("INSERT INTO Bunk (bunk_id,bunk_name) VALUES (#{bunkId},#{bunkName});")
+    public void addBunk(@Param("bunkId") String bunkId,@Param("bunkName") String bunkName);
 
-    @Delete("DELETE FROM Bunk WHERE b_id = #{b_id};")
-    public void deleteBunk(@Param("b_id") String b_id);
+    @Delete("DELETE FROM Bunk WHERE bunk_id = #{bunkId};")
+    public void deleteBunk(@Param("bunkId") String bunkId);
 
 
 }

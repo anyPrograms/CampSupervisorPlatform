@@ -18,17 +18,17 @@ import src.main.java.com.csp.entity.Staff;
 public interface StaffDao {
 
 
-    @Select("SELECT * FROM staff WHERE st_id = #{st_id};")
-    public Staff findStaffById(@Param("st_id") String st_id);
+    @Select("SELECT * FROM staff WHERE staff_id = #{staffId};")
+    public Staff findStaffById(@Param("staffId") String staffId);
 
-    @Select("SELECT * FROM staff ORDER BY st_id LIMIT #{offset}, #{limit};")
+    @Select("SELECT * FROM staff ORDER BY staff_id LIMIT #{offset}, #{limit};")
     public List<Staff> findStaffs(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO staff (st_id,st_name) VALUES (#{st_id},#{st_name});")
-    public void addStaff(@Param("st_id") String st_id,@Param("st_name") String st_name);
+    @Insert("INSERT INTO staff (staff_id,staff_name) VALUES (#{staffId},#{staffName});")
+    public void addStaff(@Param("staffId") String staffId,@Param("staffName") String staffName);
 
-    @Delete("DELETE FROM staff WHERE st_id = #{st_id};")
-    public void deleteStaff(@Param("st_id") String st_id);
+    @Delete("DELETE FROM staff WHERE staff_id = #{staffId};")
+    public void deleteStaff(@Param("staffId") String staffId);
 
 
 }

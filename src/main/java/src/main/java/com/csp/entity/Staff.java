@@ -12,8 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Staff {
 
-	private String st_id;// StaffID
+	private String staffId;// StaffID
 
-	private String st_name;// Staff名称
+	private String staffName;// Staff名称
 
 }
