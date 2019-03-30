@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import src.main.java.com.csp.dao.StudentBunkMapDao;
 import src.main.java.com.csp.dao.StudentDao;
 import src.main.java.com.csp.entity.Student;
 
@@ -14,6 +15,10 @@ import src.main.java.com.csp.entity.Student;
 public class StudentService {
 	@Autowired
 	private StudentDao studentDao;
+	
+	@Autowired
+	private StudentBunkMapDao stuBkMapDao;
+
 	
 	public Student findStudentById(String studentId) {
 		Student st = studentDao.findStudentById(studentId);
@@ -59,6 +64,7 @@ public class StudentService {
 	@Transactional
 	public void deleteStudentById(String studentId) {
 		studentDao.deleteStudent(studentId);//待改 需删除挂在sb se map下的student
+		stuBkMapDao.deleteStudentFromBunk(studentId);
 	}
 	
 	
