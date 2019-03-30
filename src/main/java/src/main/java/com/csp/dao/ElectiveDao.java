@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 
 import org.apache.ibatis.annotations.Select;
 import src.main.java.com.csp.entity.Elective;
-import src.main.java.com.csp.entity.Student;
 
 public interface ElectiveDao {
 
