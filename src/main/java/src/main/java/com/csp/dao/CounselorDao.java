@@ -20,6 +20,12 @@ public interface CounselorDao {
     @Select("SELECT * FROM counselor WHERE counselor_id = #{counselorId};")
     public Counselor findCounselorById(@Param("counselorId") String counselorId);
 
+    @Select("SELECT MAX(CAST(counselor_id as UNSIGNED INTEGER)) FROM counselor;")
+    public String findLastCounselorId();
+
+    @Select("SELECT * FROM counselor;")
+    public List<Counselor> findAllCounselors();
+
     @Select("SELECT * FROM counselor ORDER BY counselor_id LIMIT #{offset},#{limit};")
     public List<Counselor> findCounselors(@Param("offset") int offset,@Param("limit") int limit);
 

@@ -20,6 +20,9 @@ public interface DirectorDao {
     @Select("SELECT * FROM director WHERE director_id = #{directorId};")
     public Director findDirectorById(@Param("directorId") String directorId);
 
+    @Select("SELECT * FROM director;")
+    public List<Director> findAllDirectors();
+
     @Select("SELECT * FROM director ORDER BY director_id LIMIT #{offset}, #{limit};")
     public List<Director> findDirectors(@Param("offset") int offset, @Param("limit") int limit);
 
