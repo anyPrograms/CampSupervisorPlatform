@@ -21,6 +21,9 @@ public interface ElectiveDao {
     @Select("SELECT * FROM elective WHERE elective_id = #{electiveId};")
     public Elective findElectiveById(@Param("electiveId") String electiveId);
 
+    @Select("SELECT * FROM elective;")
+    public List<Elective> findAllElectives();
+
     @Select("SELECT * FROM elective ORDER BY elective_id LIMIT #{offset}, #{limit};")
     public List<Elective> findElectives(@Param("offset") int offset, @Param("limit") int limit);
 

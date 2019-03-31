@@ -21,6 +21,9 @@ public interface StaffDao {
     @Select("SELECT * FROM staff WHERE staff_id = #{staffId};")
     public Staff findStaffById(@Param("staffId") String staffId);
 
+    @Select("SELECT * FROM staff;")
+    public List<Staff> findAllStaffs();
+
     @Select("SELECT * FROM staff ORDER BY staff_id LIMIT #{offset}, #{limit};")
     public List<Staff> findStaffs(@Param("offset") int offset, @Param("limit") int limit);
 
