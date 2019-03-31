@@ -18,10 +18,10 @@ import src.main.java.com.csp.entity.Student;
 public interface StudentBunkMapDao {
 
     @Select("SELECT * FROM student st JOIN student_bunk_map sbmap ON st.student_id = sbmap.student_id AND sbmap.bunk_id = #{bunkId};")
-    public Student findStudentsByBunkId(@Param("bunkId") String bunkId);
+    public List<Student> findStudentsByBunkId(@Param("bunkId") String bunkId);
 
 	@Insert("INSERT INTO student_bunk_map (student_id,bunk_id) VALUES (#{studentId},#{bunkId});")
-	public void addStudentToBunk(@Param("bunkId") String bunkId,@Param("studentId") String studentId);
+	public void addStudentToBunk(@Param("studentId") String studentId,@Param("bunkId") String bunkId);
 	
 	@Delete("DELETE FROM student_bunk_map WHERE student_id = #{studentId};")
 	public void deleteStudentFromBunk(@Param("studentId") String studentId);
