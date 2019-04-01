@@ -29,8 +29,8 @@ public interface StudentDao {
 	@Select("SELECT * FROM student ORDER BY student_id LIMIT #{offset}, #{limit};")
 	public List<Student> findStudents(@Param("offset") int offset, @Param("limit") int limit);
 
-	@Insert("INSERT INTO student (student_id,student_name,student_bunk,student_status) VALUES (#{studentId},#{studentName},#{studentBunk},#{studentStatus});")
-	public void addStudent(@Param("studentId") String studentId,@Param("studentName") String studentName,@Param("studentBunk") String studentBunk,@Param("studentStatus") String studentStatus);
+	@Insert("INSERT INTO student (student_id,student_name,student_age,student_bunk,student_status) VALUES (#{studentId},#{studentName},#{studentAge},#{studentBunk},#{studentStatus});")
+	public void addStudent(@Param("studentId") String studentId,@Param("studentName") String studentName,@Param("studentAge") String studentAge,@Param("studentBunk") String studentBunk,@Param("studentStatus") String studentStatus);
 	
 	@Delete("DELETE FROM student WHERE student_id = #{studentId};")
 	public void deleteStudent(@Param("studentId") String studentId);

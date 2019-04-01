@@ -31,11 +31,11 @@ public class StudentService {
     }
 
     @Transactional
-    public Student addStudent(String studentName, String studentGender, String studentYear, String studentStatus, String studentAge) {
+    public Student addStudent(String studentName, String studentGender,String studentGrade, String studentYear, String studentStatus, String studentAge) {
         Student st = new Student();
         st.setStudentName(studentName);
         st.setStudentStatus(studentStatus);
-		
+		st.setStudentAge(studentAge);
 		/*  studentId 生成策略
 			年份 2019
 			年龄段 1 2 3
@@ -55,9 +55,9 @@ public class StudentService {
                 id = "0" + id;
             }
         }
-        String studentId = "S" + studentYear + studentAge + studentGender + id;
+        String studentId = "S" + studentYear + studentGrade + studentGender + id;
         st.setStudentId(studentId);
-        studentDao.addStudent(studentId, studentName, "", studentStatus);
+        studentDao.addStudent(studentId, studentName,studentAge, "", studentStatus);
         return st;
     }
 

@@ -46,15 +46,16 @@ public class StudentController {
 	public @ResponseBody Object addStudent(Model model,HttpServletRequest request,
 			@RequestParam (value = "studentName", defaultValue = "") final String studentName,
 			@RequestParam (value = "studentGender", defaultValue = "") final String studentGender,
+			@RequestParam (value = "studentGrade", defaultValue = "") final String studentGrade,
 			@RequestParam (value = "studentYear", defaultValue = "") final String studentYear,
-			@RequestParam (value = "studentStatus", defaultValue = "") final String studentStatus,
+			@RequestParam (value = "studentStatus", defaultValue = "1") final String studentStatus,
 			@RequestParam (value = "studentAge", defaultValue = "") final String studentAge
 			) throws Exception {
 		String responseBody = "";
 		Map responseMessage = new HashMap();
 		responseMessage.put("success", true);
 		try{
-			Student stuRe =studentService.addStudent(studentName, studentGender, studentYear, studentStatus, studentAge);
+			Student stuRe =studentService.addStudent(studentName, studentGender,studentGrade, studentYear, studentStatus, studentAge);
 			responseMessage.put("stu", stuRe);
 		}catch(Exception e) {
 			e.printStackTrace();
