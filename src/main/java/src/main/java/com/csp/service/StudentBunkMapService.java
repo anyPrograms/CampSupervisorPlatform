@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import src.main.java.com.csp.dao.BunkDao;
 import src.main.java.com.csp.dao.StudentBunkMapDao;
 import src.main.java.com.csp.dao.StudentDao;
+import src.main.java.com.csp.entity.Bunk;
 import src.main.java.com.csp.entity.Student;
 
 @Service
@@ -16,6 +18,14 @@ public class StudentBunkMapService {
 	@Autowired
 	private StudentBunkMapDao stuBkMapDao;
 
+	@Autowired
+	private StudentDao stuDao;
+
+	@Autowired
+	private Bunk bunk;
+	
+	@Autowired
+	private BunkDao bkDao;
 	
 	public List<Student> findStudentsByBunkId(String bunkId) {
 		List<Student> stus = stuBkMapDao.findStudentsByBunkId(bunkId);
@@ -27,8 +37,16 @@ public class StudentBunkMapService {
 		if(stuBkMapDao.findStudentIfExists(studentId)!=null) {
 			return "已经分配过房间";
 		}else {
-			stuBkMapDao.addStudentToBunk(studentId, bunkId);
-			return "分配成功";
+			Bunk bk = bkDao.findBunkById(bunkId);
+			if(bk!=null) {
+				stuDao.distributeBunk(studentId,bk.getBunkName());
+				stuBkMapDao.addStudentToBunk(studentId, bunkId);
+				return "分配成功";
+			}else {
+				return "无此房间";
+			}
+			
+			
 		}
 	}
 	

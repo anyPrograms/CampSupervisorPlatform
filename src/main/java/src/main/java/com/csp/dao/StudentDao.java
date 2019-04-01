@@ -25,6 +25,10 @@ public interface StudentDao {
 	
 	@Select("SELECT * FROM student;")
 	public List<Student> findAllStudents();
+	
+	@Update("Update student SET student_bunk = #{bunkName} WHERE student_id = #{studentId};")
+	public void distributeBunk(@Param("bunkName") String bunkName,@Param("studentId") String studentId);
+
 
 	@Select("SELECT * FROM student ORDER BY student_id LIMIT #{offset}, #{limit};")
 	public List<Student> findStudents(@Param("offset") int offset, @Param("limit") int limit);

@@ -4,7 +4,7 @@ CREATE TABLE `student` (
   `student_id` varchar(10) NOT NULL COMMENT '营员ID',
   `student_name` varchar(20) NOT NULL COMMENT '营员名称',
   `student_age` varchar(4) NOT NULL COMMENT '营员年龄',
-  `student_bunk` varchar(20) NOT NULL COMMENT '营员bunk',
+  `student_bunk` varchar(20) NOT NULL COMMENT '营员bunkName',
   `student_status` varchar(2) NOT NULL COMMENT '营员状态' DEFAULT '1' , /*0 未参加  1 正常参加  2 外出就医  3 意外退出*/
   PRIMARY KEY (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='营员表';
