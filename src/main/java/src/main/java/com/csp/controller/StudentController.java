@@ -41,6 +41,18 @@ public class StudentController {
 			HttpServletRequest request) throws Exception {
 		return studentService.findAllStudents();
 	}
+	
+	@RequestMapping(value = "countUndistributed", method = RequestMethod.GET)
+	public @ResponseBody int countUndistributedStudents(Model model,
+			HttpServletRequest request) throws Exception {
+		return studentService.countUndistributedStudents();
+	}
+	
+	@RequestMapping(value = "undistributed", method = RequestMethod.GET)
+	public @ResponseBody List<Student> findUndistributedStudents(Model model,
+			HttpServletRequest request) throws Exception {
+		return studentService.findUndistributedStudents();
+	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public @ResponseBody Object addStudent(Model model,HttpServletRequest request,

@@ -30,6 +30,15 @@ public class StudentService {
         return allSt;
     }
 
+    public int countUndistributedStudents() {
+        int disStu = studentDao.countUndistributedStudents();
+        return disStu;
+    }
+    public List<Student> findUndistributedStudents() {
+        List<Student> undisStu = studentDao.findUndistributedStudents();
+        return undisStu;
+    }
+    
     @Transactional
     public Student addStudent(String studentName, String studentGender,String studentGrade, String studentYear, String studentStatus, String studentAge) {
         Student st = new Student();

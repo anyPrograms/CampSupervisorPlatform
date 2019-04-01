@@ -23,6 +23,12 @@ public interface StudentDao {
 	@Select("SELECT MAX(CAST(student_id as UNSIGNED INTEGER)) FROM student;")
 	public String findLastStudentId();
 	
+	@Select("SELECT * FROM student WHERE student_bunk ='';")
+	public List<Student> findUndistributedStudents();
+	
+	@Select("SELECT count(*) FROM student WHERE student_bunk ='';")
+	public int countUndistributedStudents();
+	
 	@Select("SELECT * FROM student;")
 	public List<Student> findAllStudents();
 	
