@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import src.main.java.com.csp.dao.CounselorDao;
 import src.main.java.com.csp.entity.Counselor;
+import src.main.java.com.csp.entity.Student;
 
 import java.util.List;
 
@@ -23,6 +24,15 @@ public class CounselorService {
         return allCoun;
     }
 
+    public int countUndistributedCounselors() {
+        int disCoun = counselorDao.countUndistributedCounselors();
+        return disCoun;
+    }
+    public List<Counselor> findUndistributedCounselors() {
+        List<Counselor> undisCoun = counselorDao.findUndistributedCounselors();
+        return undisCoun;
+    }
+    
     @Transactional
     public Counselor addCounselor(String counselorName, String counselorGender, String counselorYear, String counselorAgeType, String counselorIntro) {
         Counselor coun = new Counselor();
@@ -50,6 +60,7 @@ public class CounselorService {
     }
 
     @Transactional
-    public void deleteCounselorById(String counselorId){}
-    //没写完 MJoe
+    public void deleteCounselorById(String counselorId){
+    	counselorDao.deleteCounselor(counselorId);
+    }
 }

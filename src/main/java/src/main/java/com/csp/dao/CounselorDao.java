@@ -9,9 +9,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import src.main.java.com.csp.entity.Counselor;
+import src.main.java.com.csp.entity.Student;
 @Repository
 @Mapper
 public interface CounselorDao {
@@ -22,6 +24,15 @@ public interface CounselorDao {
 
     @Select("SELECT MAX(CAST(counselor_id as UNSIGNED INTEGER)) FROM counselor;")
     public String findLastCounselorId();
+
+	@Select("SELECT * FROM counselor c JOIN counselor_bunk_map cbm ON c.counselor_id = cbm.counselor_id;")
+	public List<Counselor> findUndistributedCounselors();
+
+	@Select("SELECT count(*) counselor c JOIN counselor_bunk_map cbm ON c.counselor_id = cbm.counselor_id;")
+	public int countUndistributedCounselors();
+	
+	@Update("Update student SET student_bunk = #{bunkName} WHERE student_id = #{studentId};")
+	public void distributeBunk(@Param("bunkName") String bunkName,@Param("studentId") String studentId);
 
     @Select("SELECT * FROM counselor;")
     public List<Counselor> findAllCounselors();
