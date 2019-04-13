@@ -84,18 +84,19 @@ CREATE TABLE `bunk` (
 -- 创建elective表
 DROP TABLE IF EXISTS `elective`;
 CREATE TABLE `elective` (
-  `elective_id` varchar(7) NOT NULL COMMENT 'electiveID',
+  `elective_id` INT NOT NULL AUTO_INCREMENT COMMENT 'electiveID',
   `elective_name` varchar(20) NOT NULL COMMENT 'elective名称',
   `elective_vol` int COMMENT 'elective容量',
   PRIMARY KEY (`elective_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 COMMENT='elective表';
 
 /* elective_id 生成策略
+  !此生成规则已废弃，目前使用自增Id
 	类别 E
 	年龄段 001 仅小 002 仅中 003 仅大 012 中小 013 大小 023 中大 123 全龄
 	序号 001
 例： E023001 中大年龄段01号elective 
-	
+
 */
 
 -- 创建elective_period_map表
@@ -107,7 +108,7 @@ DROP TABLE IF EXISTS `period_elective_map`;
 CREATE TABLE `period_elective_map` (
   `period` varchar(2) NOT NULL COMMENT '时段',
   `elective_id` varchar(20) NOT NULL COMMENT 'elective名称',
-  `ageGroup` varchar(2) NOT NULL COMMENT '适用年龄段',
+  `age_group` varchar(2) NOT NULL COMMENT '适用年龄段',
   `date` varchar(32) NOT NULL COMMENT '日期',
   PRIMARY KEY (`period`,`elective_id`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective_period_map表';
