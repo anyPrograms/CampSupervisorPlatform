@@ -27,10 +27,14 @@ public interface ElectiveDao {
     @Select("SELECT * FROM elective ORDER BY elective_id LIMIT #{offset}, #{limit};")
     public List<Elective> findElectives(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO elective (elective_id,elective_name,elective_vol) VALUES (#{electiveId},#{electiveName},#{electiveVol});")
-    public void addElective(@Param("electiveId") String electiveId,@Param("electiveName") String electiveName,@Param("electiveVol") String electiveVol);
 
-    @Delete("DELETE FROM elective WHERE elective_id = #{electiveId};")
-    public void deleteElective(@Param("electiveId") String electiveId);
+    @Select("SELECT COUNT(*)  FROM elective;")
+    public int totalNumberOfElectives();
+
+    @Insert("INSERT INTO elective (elective_name,elective_vol) VALUES (#{electiveName},#{electiveVol});")
+    public void addElective(@Param("electiveName") String electiveName,@Param("electiveVol") String electiveVol);
+
+    @Delete("DELETE FROM elective WHERE elective_name = #{electiveName};")
+    public void deleteElective(@Param("electiveName") String electiveName);
 
 }

@@ -12,8 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Elective {
 
-	private String electiveId;// ElectiveID
+	private String electiveId;// ElectiveID,自增
 
 	private String electiveName;// Elective名称
 
+	private String electiveVolume;//Elective最大人数
+
 }
+
+
