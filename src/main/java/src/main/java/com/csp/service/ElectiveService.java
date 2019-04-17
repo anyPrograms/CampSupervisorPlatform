@@ -35,12 +35,17 @@ public class ElectiveService {
      * @return 返回一个课程实体
      *
      */
-    public Elective addElective(String electiveName,String electiveVolume){
+    public Object addElective(String electiveName,String electiveVolume){
         Elective elec=new Elective();
-        elec.setElectiveName(electiveName);
-        elec.setElectiveVolume(electiveVolume);
-        electiveDao.addElective(electiveName,electiveVolume);
-        return elec;
+        if(electiveDao.findElectiveByName(electiveName)!=null) {
+        	elec.setElectiveName(electiveName);
+            elec.setElectiveVolume(electiveVolume);
+            electiveDao.addElective(electiveName,electiveVolume);
+            return elec;
+        }else {
+        	return null;
+        }
+        
     }
 
     @Transactional
