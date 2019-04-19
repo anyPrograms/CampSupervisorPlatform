@@ -20,9 +20,6 @@ public class StudentBunkMapService {
 
 	@Autowired
 	private StudentDao stuDao;
-
-	@Autowired
-	private Bunk bunk;
 	
 	@Autowired
 	private BunkDao bkDao;
