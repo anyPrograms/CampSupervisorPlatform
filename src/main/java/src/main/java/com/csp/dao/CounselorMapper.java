@@ -16,7 +16,7 @@ import src.main.java.com.csp.entity.Counselor;
 import src.main.java.com.csp.entity.Student;
 @Repository
 @Mapper
-public interface CounselorDao {
+public interface CounselorMapper {
 
 
     @Select("SELECT * FROM counselor WHERE counselor_id = #{counselorId};")

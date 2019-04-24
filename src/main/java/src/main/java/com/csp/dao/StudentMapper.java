@@ -15,7 +15,7 @@ import src.main.java.com.csp.entity.Student;
 
 @Repository
 @Mapper
-public interface StudentDao {
+public interface StudentMapper {
 
 	@Select("SELECT * FROM student WHERE student_id = #{studentId};")
 	public Student findStudentById(@Param("studentId") String studentId);

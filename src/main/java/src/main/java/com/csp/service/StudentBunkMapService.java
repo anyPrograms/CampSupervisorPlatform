@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import src.main.java.com.csp.dao.BunkDao;
 import src.main.java.com.csp.dao.StudentBunkMapDao;
-import src.main.java.com.csp.dao.StudentDao;
+import src.main.java.com.csp.dao.StudentMapper;
 import src.main.java.com.csp.entity.Bunk;
 import src.main.java.com.csp.entity.Student;
 
@@ -19,7 +19,7 @@ public class StudentBunkMapService {
 	private StudentBunkMapDao stuBkMapDao;
 
 	@Autowired
-	private StudentDao stuDao;
+	private StudentMapper stuDao;
 	
 	@Autowired
 	private BunkDao bkDao;

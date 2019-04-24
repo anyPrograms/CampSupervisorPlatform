@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import src.main.java.com.csp.dao.StudentBunkMapDao;
-import src.main.java.com.csp.dao.StudentDao;
+import src.main.java.com.csp.dao.StudentMapper;
 import src.main.java.com.csp.entity.Student;
 
 @Service
 public class StudentService {
     @Autowired
-    private StudentDao studentDao;
+    private StudentMapper studentDao;
 
     @Autowired
     private StudentBunkMapDao stuBkMapDao;
