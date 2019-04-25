@@ -4,3 +4,6 @@
 *.project
 *.gitignore
 /target
+/classes
+/.vscode
+/META-INF

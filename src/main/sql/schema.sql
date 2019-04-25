@@ -99,32 +99,40 @@ CREATE TABLE `elective` (
 
 */
 
--- 创建elective_period_map表
+-- 创建elective_schedule表
 /*记录每个时段的课程情况
+  schedule_id 由period、elective_id、date联合生成
   peroid 1 2 3 4 5 6,代表一天六个课程时段
   ageGroup 1 2 3 小中大龄，适用于多个年龄以多条记录体现
 */
-DROP TABLE IF EXISTS `period_elective_map`;
-CREATE TABLE `period_elective_map` (
+DROP TABLE IF EXISTS `elective_schedule`;
+CREATE TABLE `elective_schedule` (
+  `schedule_id` varchar(48) NOT NULL COMMENT 'scheduleID',
   `period` varchar(2) NOT NULL COMMENT '时段',
   `elective_id` varchar(20) NOT NULL COMMENT 'elective名称',
   `age_group` varchar(2) NOT NULL COMMENT '适用年龄段',
   `date` varchar(32) NOT NULL COMMENT '日期',
-  PRIMARY KEY (`period`,`elective_id`) USING BTREE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective_period_map表';
+  PRIMARY KEY (`schedule_id`)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective_schedule表';
 
+
+-- 创建counselor_elective_map表
+/*
+  is_specialty 0 1 0为协助位，1为主负责
+*/
 DROP TABLE IF EXISTS `counselor_elective_map`;
 CREATE TABLE `counselor_elective_map`  (
   `counselor_id` varchar(11)  NOT NULL,
   `elective_id` varchar(7) NOT NULL,
+  `is_specialty` varchar(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`counselor_id`, `elective_id`) USING BTREE
 ) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='counselor_elective_map表';
 
 DROP TABLE IF EXISTS `student_elective_map`;
 CREATE TABLE `student_elective_map`  (
   `student_id` varchar(10)  NOT NULL,
-  `elective_id` varchar(7) NOT NULL,
-  PRIMARY KEY (`student_id`, `elective_id`) USING BTREE
+  `schedule_id` varchar(48) NOT NULL,
+  PRIMARY KEY (`student_id`, `schedule_id`) USING BTREE
 ) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='student_elective_map表';
 
 DROP TABLE IF EXISTS `counselor_bunk_map`;
