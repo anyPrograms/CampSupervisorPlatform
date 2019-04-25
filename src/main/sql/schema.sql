@@ -128,12 +128,12 @@ CREATE TABLE `counselor_elective_map`  (
   PRIMARY KEY (`counselor_id`, `elective_id`) USING BTREE
 ) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='counselor_elective_map表';
 
-DROP TABLE IF EXISTS `student_elective_map`;
-CREATE TABLE `student_elective_map`  (
+DROP TABLE IF EXISTS `student_elective_schedule_map`;
+CREATE TABLE `student_elective_schedule_map`  (
   `student_id` varchar(10)  NOT NULL,
   `schedule_id` varchar(48) NOT NULL,
   PRIMARY KEY (`student_id`, `schedule_id`) USING BTREE
-) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='student_elective_map表';
+) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='student_elective_schedule_map表';
 
 DROP TABLE IF EXISTS `counselor_bunk_map`;
 CREATE TABLE `counselor_bunk_map`  (

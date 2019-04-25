@@ -2,8 +2,9 @@
 /.git
 /.idea
 *.project
-*.gitignore
+.gitignore
 /target
 /classes
 /.vscode
 /META-INF
+/web
