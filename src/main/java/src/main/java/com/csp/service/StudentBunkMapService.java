@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import src.main.java.com.csp.dao.BunkDao;
-import src.main.java.com.csp.dao.StudentBunkMapDao;
+import src.main.java.com.csp.dao.BunkMapper;
+import src.main.java.com.csp.dao.StudentBunkMapMapper;
 import src.main.java.com.csp.dao.StudentMapper;
 import src.main.java.com.csp.entity.Bunk;
 import src.main.java.com.csp.entity.Student;
@@ -16,13 +16,13 @@ import src.main.java.com.csp.entity.Student;
 @Service
 public class StudentBunkMapService {
 	@Autowired
-	private StudentBunkMapDao stuBkMapDao;
+	private StudentBunkMapMapper stuBkMapDao;
 
 	@Autowired
 	private StudentMapper stuDao;
 	
 	@Autowired
-	private BunkDao bkDao;
+	private BunkMapper bkDao;
 	
 	public List<Student> findStudentsByBunkId(String bunkId) {
 		List<Student> stus = stuBkMapDao.findStudentsByBunkId(bunkId);

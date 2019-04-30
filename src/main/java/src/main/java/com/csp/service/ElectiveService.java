@@ -3,7 +3,7 @@ package src.main.java.com.csp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import src.main.java.com.csp.dao.ElectiveDao;
+import src.main.java.com.csp.dao.ElectiveMapper;
 import src.main.java.com.csp.entity.Elective;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 public class ElectiveService {
     @Autowired
-    private ElectiveDao electiveDao;
+    private ElectiveMapper electiveDao;
 
     public Elective findElectiveById(String electiveId) {
         Elective elec = electiveDao.findElectiveById(electiveId);

@@ -23,6 +23,9 @@ public interface StudentMapper {
 	@Select("SELECT MAX(CAST(student_id as UNSIGNED INTEGER)) FROM student;")
 	public String findLastStudentId();
 	
+	@Select("SELECT * FROM student WHERE student_name LIKE '%${studentName}%' AND student_bunk LIKE '%${studentBunk}%' AND student_status LIKE '%${studentStatus}%';")
+	public List<Student> findStudentsByFilters(@Param("studentName") String name,@Param("studentBunk") String bunk,@Param("studentStatus") String status);
+	
 	@Select("SELECT * FROM student WHERE student_bunk ='';")
 	public List<Student> findUndistributedStudents();
 	
