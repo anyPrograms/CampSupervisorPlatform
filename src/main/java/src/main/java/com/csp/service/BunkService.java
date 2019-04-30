@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import src.main.java.com.csp.dao.BunkDao;
+import src.main.java.com.csp.dao.BunkMapper;
 import src.main.java.com.csp.entity.Bunk;
 
 @Service
 public class BunkService {
 	@Autowired
-	private BunkDao bunkDao;
+	private BunkMapper bunkDao;
 	
 	public Bunk findBunkById(String bunkId) {
 		Bunk st = bunkDao.findBunkById(bunkId);

@@ -15,7 +15,7 @@ import src.main.java.com.csp.entity.Staff;
 
 @Repository
 @Mapper
-public interface StaffDao {
+public interface StaffMapper {
 
 
     @Select("SELECT * FROM staff WHERE staff_id = #{staffId};")

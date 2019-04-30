@@ -15,7 +15,7 @@ import src.main.java.com.csp.entity.Elective;
 
 @Repository
 @Mapper
-public interface ElectiveDao {
+public interface ElectiveMapper {
 
 
     @Select("SELECT * FROM elective WHERE elective_id = #{electiveId};")

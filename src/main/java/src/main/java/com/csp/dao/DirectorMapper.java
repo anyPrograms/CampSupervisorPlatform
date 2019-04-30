@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import src.main.java.com.csp.entity.Director;
 @Repository
 @Mapper
-public interface DirectorDao {
+public interface DirectorMapper {
 
 
     @Select("SELECT * FROM director WHERE director_id = #{directorId};")

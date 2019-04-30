@@ -39,6 +39,16 @@ public class StudentController {
 		return studentService.findAllStudents();
 	}
 	
+	@RequestMapping(value = "findByFilters", method = RequestMethod.GET)
+	public List<Student> findStudentsByFilters(Model model, HttpServletRequest request,
+			@RequestParam(value = "name", defaultValue = "") final String name,
+			@RequestParam(value = "bunk", defaultValue = "") final String bunk,
+			@RequestParam(value = "status", defaultValue = "") final String status
+		){
+		List<Student> students = studentService.findStudentsByFilters(name, bunk, status);
+		return students;
+	}
+	
 	@RequestMapping(value = "countUndistributed", method = RequestMethod.GET)
 	public @ResponseBody int countUndistributedStudents(Model model,
 			HttpServletRequest request) throws Exception {

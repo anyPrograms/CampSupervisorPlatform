@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import src.main.java.com.csp.entity.Bunk;
 @Repository
 @Mapper
-public interface BunkDao {
+public interface BunkMapper {
 
     @Select("SELECT * FROM bunk WHERE bunk_id = #{bunkId};")
     public Bunk findBunkById(@Param("bunkId") String bunkId);

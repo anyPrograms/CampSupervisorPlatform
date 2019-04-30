@@ -15,7 +15,7 @@ import src.main.java.com.csp.entity.Bunk;
 import src.main.java.com.csp.entity.Student;
 @Repository
 @Mapper
-public interface StudentBunkMapDao {
+public interface StudentBunkMapMapper {
 
     @Select("SELECT * FROM student st JOIN student_bunk_map sbmap ON st.student_id = sbmap.student_id AND sbmap.bunk_id = #{bunkId};")
     public List<Student> findStudentsByBunkId(@Param("bunkId") String bunkId);
