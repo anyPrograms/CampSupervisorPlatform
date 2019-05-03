@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import cn.csp.dao.StudentBunkMapMapper;
 import cn.csp.dao.StudentMapper;
+import cn.csp.entity.Bunk;
 import cn.csp.entity.Student;
 
 @Service
@@ -16,8 +17,8 @@ public class StudentService {
     @Autowired
     private StudentMapper studentDao;
 
-    @Autowired
-    private StudentBunkMapMapper stuBkMapDao;
+//    @Autowired
+//    private StudentBunkMapMapper stuBkMapDao;
 
 
     public Student findStudentById(String studentId) {
@@ -79,8 +80,28 @@ public class StudentService {
     @Transactional
     public void deleteStudentById(String studentId) {
         studentDao.deleteStudent(studentId);//待改 需删除挂在sb se map下的student
-        stuBkMapDao.deleteStudentFromBunk(studentId);
+//        stuBkMapDao.deleteStudentFromBunk(studentId);
     }
 
+    public List<Student> findStudentsByBunkId(String bunkId) {
+		List<Student> stus = studentDao.findStudentsByBunkId(bunkId);
+		return stus;
+	}
+	
+	@Transactional
+	public void addStudentToBunk(String studentId,String bunkId) {
+		studentDao.distributeBunk(bunkId,studentId);		
+	}
+	
+	@Transactional
+	public void deleteStudentFromBunk(String studentId) {
+		studentDao.distributeBunk("",studentId);
+	}
+	
+	@Transactional
+	public String deleteStudentsByBunk(String bunkId) {
+		studentDao.deleteStudentsByBunk(bunkId);
+		return "清空房间成功";
+	}
 
 }
