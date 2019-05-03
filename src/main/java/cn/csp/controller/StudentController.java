@@ -41,6 +41,16 @@ public class StudentController {
 		}else {
 			return null;
 		}
+	}
+	
+	@RequestMapping(value = "findById/{studentId}", method = RequestMethod.GET)
+	public @ResponseBody Student findStudentById(Model model,
+			HttpServletRequest request,@PathVariable String studentId) throws Exception {
+		if(studentId!=null) {
+			return studentService.findStudentById(studentId);
+		}else {
+			return null;
+		}
 		
 	}
 
