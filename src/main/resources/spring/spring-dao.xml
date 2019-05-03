@@ -32,7 +32,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
     <property name="dataSource" ref="dataSource" />  
     <property name="configLocation" value="classpath:mybatis-config.xml"/>
-    <property name="typeAliasesPackage" value="src.main.java.com.csp.entity" />
+    <property name="typeAliasesPackage" value="cn.csp.entity" />
     <property name="mapperLocations" value="classpath*:**/*Mapper*.xml"></property>  
 	</bean>  
 
@@ -41,6 +41,6 @@
 		<!-- 注入sqlSessionFactory -->
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
 		<!-- 给出需要扫描Mapper接口包 -->
-		<property name="basePackage" value="src.main.java.com.csp.dao" />
+		<property name="basePackage" value="cn.csp.dao" />
 	</bean>
 </beans>

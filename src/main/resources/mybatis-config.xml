@@ -28,6 +28,6 @@
 	</environments>
 
 	<mappers>
-		<package name="src.main.java.com.csp.dao"/>
+		<package name="cn.csp.dao"/>
 	</mappers>
 </configuration>
