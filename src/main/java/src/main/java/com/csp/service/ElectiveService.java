@@ -49,7 +49,7 @@ public class ElectiveService {
     }
 
     @Transactional
-    public void deleteElectiveBy(String electiveName){
+    public void deleteElectiveByName(String electiveName){
         electiveDao.deleteElective(electiveName);
     }
 
