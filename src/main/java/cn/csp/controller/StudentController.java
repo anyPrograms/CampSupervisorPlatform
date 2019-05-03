@@ -33,6 +33,66 @@ public class StudentController {
 	private StudentService studentService;
 
 
+	@RequestMapping(value = "findStudentsByBunk/{bunkId}", method = RequestMethod.GET)
+	public @ResponseBody List<Student> findStudentsByBunk(Model model,
+			HttpServletRequest request,@PathVariable String bunkId) throws Exception {
+		if(bunkId!=null) {
+			return studentService.findStudentsByBunkId(bunkId);
+		}else {
+			return null;
+		}
+		
+	}
+
+	@RequestMapping(value = "addStudentToBunk", method = RequestMethod.POST)
+	public @ResponseBody Object addStudentToBunk(Model model,HttpServletRequest request,
+			@RequestParam (value = "studentId", defaultValue = "") final String studentId,
+			@RequestParam (value = "bunkId", defaultValue = "") final String bunkId
+			) throws Exception {
+		String responseBody = "";
+		Map responseMessage = new HashMap();
+		responseMessage.put("success", true);
+		try{
+			studentService.addStudentToBunk(bunkId, studentId);
+		}catch(Exception e) {
+			e.printStackTrace();
+			responseMessage.put("success", false);
+		}		
+		return responseMessage;
+	}
+
+	@RequestMapping(value = "deleteStudent/{studentId}", method = RequestMethod.POST)
+	public Object deleteStudent(Model model,
+			HttpServletRequest request,@PathVariable String studentId) throws Exception {
+		Map responseMessage = new HashMap();
+		responseMessage.put("success", true);
+		try {
+			studentService.deleteStudentFromBunk(studentId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String responseBody = "操作失败！"+e.getMessage();
+			responseMessage.put("msg", responseBody);
+			responseMessage.put("success", false);
+		}
+		return responseMessage;
+	}
+	
+	@RequestMapping(value = "deleteStudentsByBunk/{bunkId}", method = RequestMethod.POST)
+	public Object deleteStudentsByBunk(Model model,
+			HttpServletRequest request,@PathVariable String bunkId) throws Exception {
+		Map responseMessage = new HashMap();
+		responseMessage.put("success", true);
+		try {
+			studentService.deleteStudentsByBunk(bunkId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			String responseBody = "操作失败！"+e.getMessage();
+			responseMessage.put("msg", responseBody);
+			responseMessage.put("success", false);
+		}
+		return responseMessage;
+	}
+	
 	@RequestMapping(value = "all", method = RequestMethod.GET)
 	public @ResponseBody List<Student> findAllStudents(Model model,
 			HttpServletRequest request) throws Exception {

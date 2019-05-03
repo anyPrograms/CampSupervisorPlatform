@@ -20,6 +20,9 @@ public interface StudentMapper {
 	@Select("SELECT * FROM student WHERE student_id = #{studentId};")
 	public Student findStudentById(@Param("studentId") String studentId);
 
+	@Select("SELECT * FROM student WHERE student_bunk = #{bunkId};")
+	public List<Student> findStudentsByBunkId(@Param("bunkId") String bunkId);
+	
 	@Select("SELECT MAX(CAST(student_id as UNSIGNED INTEGER)) FROM student;")
 	public String findLastStudentId();
 	
@@ -35,9 +38,8 @@ public interface StudentMapper {
 	@Select("SELECT * FROM student;")
 	public List<Student> findAllStudents();
 	
-	@Update("Update student SET student_bunk = #{bunkName} WHERE student_id = #{studentId};")
-	public void distributeBunk(@Param("bunkName") String bunkName,@Param("studentId") String studentId);
-
+	@Update("Update student SET student_bunk = #{bunkId} WHERE student_id = #{studentId};")
+	public void distributeBunk(@Param("bunkId") String bunkId,@Param("studentId") String studentId);
 
 	@Select("SELECT * FROM student ORDER BY student_id LIMIT #{offset}, #{limit};")
 	public List<Student> findStudents(@Param("offset") int offset, @Param("limit") int limit);
@@ -47,5 +49,8 @@ public interface StudentMapper {
 	
 	@Delete("DELETE FROM student WHERE student_id = #{studentId};")
 	public void deleteStudent(@Param("studentId") String studentId);
+	
+	@Delete("DELETE FROM student WHERE student_bunk = #{bunkId};")
+	public void deleteStudentsByBunk(@Param("bunkId") String bunkId);
 
 }
