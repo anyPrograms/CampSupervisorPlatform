@@ -22,7 +22,7 @@ public interface CounselorMapper {
     @Select("SELECT * FROM counselor WHERE counselor_id = #{counselorId};")
     public Counselor findCounselorById(@Param("counselorId") String counselorId);
 
-    @Select("SELECT MAX(CAST(counselor_id as UNSIGNED INTEGER)) FROM counselor;")
+    @Select("select counselor_id from counselor order by substring(counselor_id,8) desc limit 1;")
     public String findLastCounselorId();
 
 	@Select("SELECT * FROM counselor c JOIN counselor_bunk_map cbm ON c.counselor_id = cbm.counselor_id;")

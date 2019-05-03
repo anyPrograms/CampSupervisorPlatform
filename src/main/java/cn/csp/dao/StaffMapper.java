@@ -24,6 +24,7 @@ public interface StaffMapper {
     @Select("SELECT * FROM staff;")
     public List<Staff> findAllStaffs();
 
+    //在service里没有实现该方法
     @Select("SELECT * FROM staff ORDER BY staff_id LIMIT #{offset}, #{limit};")
     public List<Staff> findStaffs(@Param("offset") int offset, @Param("limit") int limit);
 
@@ -32,6 +33,9 @@ public interface StaffMapper {
 
     @Delete("DELETE FROM staff WHERE staff_id = #{staffId};")
     public void deleteStaff(@Param("staffId") String staffId);
+
+    @Select("select * from staff order by substring(staff_id,7) desc;")
+    public String findLastStaffId();
 
 
 }

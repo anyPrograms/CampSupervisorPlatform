@@ -17,12 +17,21 @@ public class ElectiveService {
 
     /**
      * 根据Id查找课程
-     *
      * @param electiveId 课程Id
      * @return 返回一个课程实体
      */
     public Elective findElectiveById(String electiveId) {
         Elective elec = electiveDao.findElectiveById(electiveId);
+        return elec;
+    }
+
+    /**
+     * 根据Name查找课程
+     * @param electiveName 课程Name
+     * @return 返回一个课程实体
+     */
+    public Elective findElectiveByName(String electiveName) {
+        Elective elec = electiveDao.findElectiveByName(electiveName);
         return elec;
     }
 
@@ -50,7 +59,7 @@ public class ElectiveService {
      * @param electiveVolume 课程总人数
      * @return 返回一个课程实体
      */
-    public Object addElective(String electiveName, String electiveVolume) {
+    public Elective addElective(String electiveName, String electiveVolume) {
         Elective elec = new Elective();
         if (electiveDao.findElectiveByName(electiveName) != null) {
             elec.setElectiveName(electiveName);
