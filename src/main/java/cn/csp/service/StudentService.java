@@ -64,7 +64,6 @@ public class StudentService {
         if (id.equals(null)) {
             id = "001";
         } else {
-            id = id.substring(id.length() - 3, id.length());
             int tmp = Integer.parseInt(id) + 1;
             id = String.valueOf(tmp);
             while (3 - id.length() > 0) {
@@ -89,7 +88,7 @@ public class StudentService {
 	}
 	
 	@Transactional
-	public void addStudentToBunk(String studentId,String bunkId) {
+	public void addStudentToBunk(String bunkId,String studentId) {
 		studentDao.distributeBunk(bunkId,studentId);		
 	}
 	
