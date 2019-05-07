@@ -163,7 +163,7 @@ public class StudentController {
     }
 
     @RequestMapping(value = "deleteById/{studentId}", method = RequestMethod.POST)
-    public Object deleteById(Model model,
+    public @ResponseBody Object deleteById(Model model,
                              HttpServletRequest request, @PathVariable String studentId) throws Exception {
         Map responseMessage = new HashMap();
         responseMessage.put("success", true);

@@ -27,9 +27,10 @@ public class BunkService {
 		return allSt;
 	}
 	
-	public Bunk addBunk(String bunkName) {
+	public Bunk addBunk(String bunkName,String bunkVol) {
 		Bunk bk = new Bunk();
 		bk.setBunkName(bunkName);
+		bk.setBunkVol(bunkVol);
 		
 		/*  bunkId 生成策略
 			时间戳
@@ -38,7 +39,7 @@ public class BunkService {
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		String bunkId = df.format(d.getTime());
 		bk.setBunkId(bunkId);
-		bunkDao.addBunk(bunkId, bunkName);
+		bunkDao.addBunk(bunkId, bunkName,bunkVol);
 		return bk;
 	}
 	

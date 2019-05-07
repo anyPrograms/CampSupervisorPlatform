@@ -25,8 +25,8 @@ public interface BunkMapper {
     @Select("SELECT * FROM bunk ORDER BY bunk_id LIMIT #{offset}, #{limit};")
     public List<Bunk> findBunks(@Param("offset") int offset, @Param("limit") int limit);
 
-    @Insert("INSERT INTO bunk (bunk_id,bunk_name) VALUES (#{bunkId},#{bunkName});")
-    public void addBunk(@Param("bunkId") String bunkId,@Param("bunkName") String bunkName);
+    @Insert("INSERT INTO bunk (bunk_id,bunk_name,bunk_vol) VALUES (#{bunkId},#{bunkName},#{bunkVol});")
+    public void addBunk(@Param("bunkId") String bunkId,@Param("bunkName") String bunkName,@Param("bunkVol") String bunkVol);
 
     @Delete("DELETE FROM bunk WHERE bunk_id = #{bunkId};")
     public void deleteBunk(@Param("bunkId") String bunkId);

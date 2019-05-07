@@ -40,13 +40,14 @@ public class BunkController {
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	public @ResponseBody Object addBunk(Model model,HttpServletRequest request,
-			@RequestParam (value = "bunkName", defaultValue = "") final String bunkName
+			@RequestParam (value = "bunkName", defaultValue = "") final String bunkName,
+			@RequestParam (value = "bunkVol", defaultValue = "") final String bunkVol
 			) throws Exception {
 		String responseBody = "";
 		Map responseMessage = new HashMap();
 		responseMessage.put("success", true);
 		try{
-			Bunk bkRe =bunkService.addBunk(bunkName);
+			Bunk bkRe =bunkService.addBunk(bunkName,bunkVol);
 			responseMessage.put("bunk", bkRe);
 		}catch(Exception e) {
 			e.printStackTrace();

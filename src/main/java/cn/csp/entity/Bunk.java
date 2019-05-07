@@ -15,5 +15,7 @@ public class Bunk {
 	private String bunkId;// BunkID
 
 	private String bunkName;// bunk名称
+	
+	private String bunkVol;// bunk容量
 
 }

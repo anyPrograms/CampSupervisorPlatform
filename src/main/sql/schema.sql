@@ -76,6 +76,7 @@ DROP TABLE IF EXISTS `bunk`;
 CREATE TABLE `bunk` (
   `bunk_id` varchar(14) NOT NULL COMMENT 'bunkID',
   `bunk_name` varchar(20) NOT NULL COMMENT 'bunk名称',
+  `bunk_vol` varchar(4) NOT NULL COMMENT 'bunk容量',
   PRIMARY KEY (`bunk_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='bunk表';
 
