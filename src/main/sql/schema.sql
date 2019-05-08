@@ -118,6 +118,14 @@ CREATE TABLE `elective_schedule` (
   PRIMARY KEY (`schedule_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective_schedule表';
 
+-- 创建location表
+DROP TABLE IF EXISTS `location`;
+CREATE TABLE `location` (
+  `location_id` INT NOT NULL AUTO_INCREMENT COMMENT 'locationID',
+  `location_name` varchar(20) NOT NULL COMMENT 'location名称'
+  
+  PRIMARY KEY (`location_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 COMMENT='location表';
 
 -- 创建counselor_elective_map表
 /*
