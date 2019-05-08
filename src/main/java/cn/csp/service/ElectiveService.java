@@ -59,12 +59,12 @@ public class ElectiveService {
      * @param electiveVolume 课程总人数
      * @return 返回一个课程实体
      */
-    public Elective addElective(String electiveName, String electiveVolume) {
+    public Elective addElective(String electiveName, String electiveIntro) {
         Elective elec = new Elective();
         if (electiveDao.findElectiveByName(electiveName) != null) {
             elec.setElectiveName(electiveName);
-            elec.setElectiveVolume(electiveVolume);
-            electiveDao.addElective(electiveName, electiveVolume);
+            elec.setElectiveIntro(electiveIntro);
+            electiveDao.addElective(electiveName, electiveIntro);
             return elec;
         } else {
             return null;

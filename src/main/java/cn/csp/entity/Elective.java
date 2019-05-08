@@ -16,7 +16,7 @@ public class Elective {
 
 	private String electiveName;// Elective名称
 
-	private String electiveVolume;//Elective最大人数
+	private String electiveIntro;//Elective介绍
 
 }
 

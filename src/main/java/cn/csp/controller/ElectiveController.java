@@ -59,12 +59,14 @@ public class ElectiveController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public @ResponseBody
-    Object addElective(Model model, HttpServletRequest request, @RequestParam(value = "electiveName", defaultValue = "") final String electiveName, @RequestParam(value = "electiveVol", defaultValue = "") final String electiveVol) throws Exception {
+    Object addElective(Model model, HttpServletRequest request,
+    		@RequestParam(value = "electiveName", defaultValue = "") final String electiveName,
+    		@RequestParam(value = "electiveIntro", defaultValue = "") final String electiveIntro) throws Exception {
         String responseBody = "";
         Map responseMessage = new HashMap();
         responseMessage.put("success", true);
         try {
-            Elective elecRe = electiveService.addElective(electiveName, electiveVol);
+            Elective elecRe = electiveService.addElective(electiveName, electiveIntro);
             responseMessage.put("elec", elecRe);
         } catch (Exception e) {
             e.printStackTrace();
