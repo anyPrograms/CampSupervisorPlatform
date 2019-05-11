@@ -87,7 +87,7 @@ DROP TABLE IF EXISTS `elective`;
 CREATE TABLE `elective` (
   `elective_id` varchar(14) NOT NULL COMMENT 'electiveID',
   `elective_name` varchar(20) NOT NULL COMMENT 'elective名称',
-  `elective_intro` varchar(100) NOT NULL COMMENT 'elective介绍'，
+  `elective_intro` varchar(100) NOT NULL COMMENT 'elective介绍',
   
   PRIMARY KEY (`elective_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 COMMENT='elective表';
@@ -115,7 +115,7 @@ CREATE TABLE `elective_schedule` (
   `age_group` varchar(2) NOT NULL COMMENT '适用年龄段',
   `date` varchar(32) NOT NULL COMMENT '日期',
   `schedule_vol` varchar(6) NOT NULL COMMENT '容量',
-  `location_id` varchar(14) NOT NULL 'locationID',
+  `location_id` varchar(14) NOT NULL COMMENT 'locationID',
   PRIMARY KEY (`schedule_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='elective_schedule表';
 
