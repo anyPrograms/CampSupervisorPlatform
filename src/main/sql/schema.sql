@@ -161,3 +161,12 @@ CREATE TABLE `student_bunk_map`  (
 ) ENGINE = InnoDB CHARSET = utf8mb4 ROW_FORMAT = Dynamic COMMENT='student_bunk_map 表';
 SET FOREIGN_KEY_CHECKS = 1;
 
+DROP TABLE IF EXISTS `student_time_location_map`;
+CREATE TABLE `student_time_location_map`  (
+  `student_id` varchar(10)  NOT NULL,
+  `location_id` varchar(14) NOT NULL,
+  `period` varchar(4) NOT NULL,
+	`date` varchar(8) NOT NULL,
+  PRIMARY KEY (`student_id`, `location_id`,`period`,`date`) 
+) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='student_time_location_map 表';
+SET FOREIGN_KEY_CHECKS = 1;
