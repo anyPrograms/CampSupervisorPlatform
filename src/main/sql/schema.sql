@@ -115,7 +115,7 @@ CREATE TABLE `elective_schedule` (
   `age_group` varchar(2) NOT NULL COMMENT '适用年龄段',
   `date` varchar(32) NOT NULL COMMENT '日期',
   `schedule_vol` varchar(6) NOT NULL COMMENT '容量',
-  `location_id` INT NOT NULL 'locationID'
+  `location_id` varchar(14) NOT NULL 'locationID'
   PRIMARY KEY (`schedule_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective_schedule表';
 
