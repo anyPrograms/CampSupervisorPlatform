@@ -23,6 +23,10 @@ public interface StudentElectiveScheduleMapMapper {
 	public void addScheduleToStudentScheduleMap(@Param("studentId") String studentId,@Param("scheduleId") String scheduleId);
 	
 	@Delete("DELETE FROM student_elective_schedule_map WHERE schedule_id = #{scheduleId} AND student_id = #{studentId};")
-	public void deleteScheduleToStudentScheduleMap(@Param("scheduleId") String scheduleId,@Param("studentId") String studentId);
+	public void deleteScheduleFromStudentScheduleMap(@Param("scheduleId") String scheduleId,@Param("studentId") String studentId);
+	
+	@Delete("DELETE FROM student_elective_schedule_map WHERE student_id = #{studentId};")
+	public void deleteStudentRecords(@Param("studentId") String studentId);
+
 
 }

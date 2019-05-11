@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.csp.dao.LocationMapper;
 import cn.csp.entity.Location;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -35,7 +37,10 @@ public class LocationService {
         Location loc = new Location();
         if (locationDao.findLocationByName(locationName) != null) {
             loc.setLocationName(locationName);
-            locationDao.addLocation(locationName);
+            Date date = new Date();
+            SimpleDateFormat SDF=new SimpleDateFormat("yyyyMMddHHmmss");
+            String locationId=SDF.format(date);
+            locationDao.addLocation(locationId,locationName);
             return loc;
         } else {
             return null;

@@ -34,8 +34,8 @@ public interface ElectiveMapper {
     @Select("SELECT COUNT(*)  FROM elective;")
     public int totalNumberOfElectives();
 
-    @Insert("INSERT INTO elective (elective_name,elective_intro) VALUES (#{electiveName},#{electiveIntro});")
-    public void addElective(@Param("electiveName") String electiveName,@Param("electiveIntro") String electiveIntro);
+    @Insert("INSERT INTO elective (elective_id,elective_name,elective_intro) VALUES (#{electiveId},#{electiveName},#{electiveIntro});")
+    public void addElective(@Param("electiveId") String electiveId,@Param("electiveName") String electiveName,@Param("electiveIntro") String electiveIntro);
 
     @Delete("DELETE FROM elective WHERE elective_name = #{electiveName};")
     public void deleteElective(@Param("electiveName") String electiveName);

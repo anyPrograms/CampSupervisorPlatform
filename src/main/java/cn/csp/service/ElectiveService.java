@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.csp.dao.ElectiveMapper;
 import cn.csp.entity.Elective;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -63,8 +65,11 @@ public class ElectiveService {
         Elective elec = new Elective();
         if (electiveDao.findElectiveByName(electiveName) != null) {
             elec.setElectiveName(electiveName);
+            Date date = new Date();
+            SimpleDateFormat SDF=new SimpleDateFormat("yyyyMMddHHmmss");
+            String electiveId=SDF.format(date);
             elec.setElectiveIntro(electiveIntro);
-            electiveDao.addElective(electiveName, electiveIntro);
+            electiveDao.addElective(electiveId,electiveName, electiveIntro);
             return elec;
         } else {
             return null;

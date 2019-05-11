@@ -20,6 +20,7 @@ public class ElectiveSchedule {
 
 	private String ageGroup;
 
+	private String scheduleVol;
 }
 
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.csp.dao.StudentBunkMapMapper;
+import cn.csp.dao.StudentElectiveScheduleMapMapper;
 import cn.csp.dao.StudentMapper;
 import cn.csp.entity.Bunk;
 import cn.csp.entity.Student;
@@ -17,8 +18,11 @@ public class StudentService {
     @Autowired
     private StudentMapper studentDao;
 
-//    @Autowired
-//    private StudentBunkMapMapper stuBkMapDao;
+    @Autowired
+    private StudentElectiveScheduleMapMapper SESMapDao;
+    
+    @Autowired
+    private StudentBunkMapMapper stuBkMapDao;
 
 
     public Student findStudentById(String studentId) {
@@ -61,7 +65,7 @@ public class StudentService {
 		例：S201911001  2019年小龄段男生01号
 		*/
         String id = studentDao.findLastStudentId();
-        if (id.equals(null)) {
+        if (id.equals(null)||id.equals("")) {
             id = "001";
         } else {
             int tmp = Integer.parseInt(id) + 1;
@@ -79,7 +83,8 @@ public class StudentService {
     @Transactional
     public void deleteStudentById(String studentId) {
         studentDao.deleteStudent(studentId);//待改 需删除挂在sb se map下的student
-//        stuBkMapDao.deleteStudentFromBunk(studentId);
+        stuBkMapDao.deleteStudentFromBunk(studentId);        
+        SESMapDao.deleteStudentRecords(studentId);
     }
 
     public List<Student> findStudentsByBunkId(String bunkId) {

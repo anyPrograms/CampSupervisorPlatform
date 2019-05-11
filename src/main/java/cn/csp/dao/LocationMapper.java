@@ -28,8 +28,8 @@ public interface LocationMapper {
     @Select("SELECT * FROM location;")
     public List<Location> findAllLocations();
 
-    @Insert("INSERT INTO location (location_name) VALUES (#{locationName};")
-    public void addLocation(@Param("locationName") String locationName);
+    @Insert("INSERT INTO location (location_id,location_name) VALUES (#{locationId},#{locationName};")
+    public void addLocation(@Param("locationId") String locationId,@Param("locationName") String locationName);
 
     @Update("Update location SET location_name VALUES #{locationName} WHERE location_id = #{locationId};")
     public void updateLocation(@Param("locationId") String locationId,@Param("locationName") String locationName);
