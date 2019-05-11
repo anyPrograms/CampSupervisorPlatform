@@ -85,7 +85,7 @@ CREATE TABLE `bunk` (
 -- 创建elective表
 DROP TABLE IF EXISTS `elective`;
 CREATE TABLE `elective` (
-  `elective_id` INT NOT NULL AUTO_INCREMENT COMMENT 'electiveID',
+  `elective_id` varchar(14) NOT NULL COMMENT 'electiveID',
   `elective_name` varchar(20) NOT NULL COMMENT 'elective名称',
   `elective_intro` varchar(100) NOT NULL COMMENT 'elective介绍'，
   
@@ -93,7 +93,7 @@ CREATE TABLE `elective` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 COMMENT='elective表';
 
 /* elective_id 生成策略
-  !此生成规则已废弃，目前使用自增Id
+  !此生成规则已废弃，目前使用时间戳
 	类别 E
 	年龄段 001 仅小 002 仅中 003 仅大 012 中小 013 大小 023 中大 123 全龄
 	序号 001
@@ -111,17 +111,18 @@ DROP TABLE IF EXISTS `elective_schedule`;
 CREATE TABLE `elective_schedule` (
   `schedule_id` varchar(48) NOT NULL COMMENT 'scheduleID',
   `period` varchar(2) NOT NULL COMMENT '时段',
-  `elective_id` varchar(20) NOT NULL COMMENT 'electiveId',
+  `elective_id` varchar(14) NOT NULL COMMENT 'electiveID',
   `age_group` varchar(2) NOT NULL COMMENT '适用年龄段',
   `date` varchar(32) NOT NULL COMMENT '日期',
   `schedule_vol` varchar(6) NOT NULL COMMENT '容量',
+  `location_id` INT NOT NULL 'locationID'
   PRIMARY KEY (`schedule_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='elective_schedule表';
 
 -- 创建location表
 DROP TABLE IF EXISTS `location`;
 CREATE TABLE `location` (
-  `location_id` INT NOT NULL AUTO_INCREMENT COMMENT 'locationID',
+  `location_id` varchar(14) NOT NULL AUTO_INCREMENT COMMENT 'locationID',
   `location_name` varchar(20) NOT NULL COMMENT 'location名称'
   
   PRIMARY KEY (`location_id`)
@@ -134,7 +135,7 @@ CREATE TABLE `location` (
 DROP TABLE IF EXISTS `counselor_elective_map`;
 CREATE TABLE `counselor_elective_map`  (
   `counselor_id` varchar(11)  NOT NULL,
-  `elective_id` varchar(7) NOT NULL,
+  `elective_id` varchar(14) NOT NULL,
   `is_specialty` varchar(2) NOT NULL DEFAULT '0',
   PRIMARY KEY (`counselor_id`, `elective_id`) USING BTREE
 ) ENGINE = InnoDB CHARSET = utf8 ROW_FORMAT = Dynamic COMMENT='counselor_elective_map表';
