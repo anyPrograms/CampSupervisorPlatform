@@ -90,7 +90,7 @@ CREATE TABLE `elective` (
   `elective_intro` varchar(100) NOT NULL COMMENT 'elective介绍',
   
   PRIMARY KEY (`elective_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 COMMENT='elective表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='elective表';
 
 /* elective_id 生成策略
   !此生成规则已废弃，目前使用时间戳
