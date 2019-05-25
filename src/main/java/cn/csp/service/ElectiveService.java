@@ -58,7 +58,7 @@ public class ElectiveService {
     /**
      * 添加课程
      * @param electiveName 课程名称
-     * @param electiveVolume 课程总人数
+     * @param electiveIntro 课程介绍
      * @return 返回一个课程实体
      */
     public Elective addElective(String electiveName, String electiveIntro) {

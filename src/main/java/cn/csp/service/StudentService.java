@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import cn.csp.dao.BunkMapper;
 import cn.csp.dao.StudentBunkMapMapper;
 import cn.csp.dao.StudentElectiveScheduleMapMapper;
 import cn.csp.dao.StudentMapper;
@@ -18,6 +19,9 @@ public class StudentService {
     @Autowired
     private StudentMapper studentDao;
 
+    @Autowired
+    private BunkMapper bunkDao;
+    
     @Autowired
     private StudentElectiveScheduleMapMapper SESMapDao;
     
@@ -42,9 +46,15 @@ public class StudentService {
     }
 
     public int countUndistributedStudents() {
-        int disStu = studentDao.countUndistributedStudents();
+        int undisStu = studentDao.countUndistributedStudents();
+        return undisStu;
+    }
+    
+    public int countDistributedStudents() {
+        int disStu = studentDao.countDistributedStudents();
         return disStu;
     }
+    
     public List<Student> findUndistributedStudents() {
         List<Student> undisStu = studentDao.findUndistributedStudents();
         return undisStu;
@@ -93,8 +103,15 @@ public class StudentService {
 	}
 	
 	@Transactional
-	public void addStudentToBunk(String bunkId,String studentId) {
-		studentDao.distributeBunk(bunkId,studentId);		
+	public String addStudentToBunk(String bunkId,String studentId) {
+		if(studentDao.findStudentById(studentId)==null) {
+			return "noStudent";
+		}else if(bunkDao.findBunkById(bunkId)==null){
+			return "noBunk";
+		}else {
+			studentDao.distributeBunk(bunkId,studentId);
+			return "success";
+		}
 	}
 	
 	@Transactional

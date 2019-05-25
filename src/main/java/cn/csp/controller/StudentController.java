@@ -66,9 +66,17 @@ public class StudentController {
         Map responseMessage = new HashMap();
         responseMessage.put("success", true);
         try {
-            studentService.addStudentToBunk(bunkId, studentId);
+        	String re=studentService.addStudentToBunk(bunkId, studentId);
+        	if(re.equals("noBunk")) {
+        		responseMessage.put("success", false);
+        		responseMessage.put("reason", "no such bunk");
+        	}else if(re.equals("noStudent")) {
+        		responseMessage.put("success", false);
+        		responseMessage.put("reason", "no such student");        		
+        	}
         } catch (Exception e) {
             e.printStackTrace();
+            responseMessage.put("reason", "系统错误"+e.getMessage());
             responseMessage.put("success", false);
         }
         return responseMessage;
@@ -130,6 +138,13 @@ public class StudentController {
         return studentService.countUndistributedStudents();
     }
 
+    @RequestMapping(value = "countDistributed", method = RequestMethod.GET)
+    public @ResponseBody
+    int countDistributedStudents(Model model,
+                                   HttpServletRequest request) throws Exception {
+        return studentService.countUndistributedStudents();
+    }
+    
     @RequestMapping(value = "undistributed", method = RequestMethod.GET)
     public @ResponseBody
     List<Student> findUndistributedStudents(Model model,
