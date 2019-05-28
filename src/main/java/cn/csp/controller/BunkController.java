@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.csp.dto.Result;
 import cn.csp.entity.Bunk;
+import cn.csp.entity.Student;
 import cn.csp.service.BunkService;
+import cn.csp.util.JsonHelper;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -39,11 +41,12 @@ public class BunkController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
-	public @ResponseBody Object addBunk(Model model,HttpServletRequest request,
+	public @ResponseBody Object addBunk(Model model,HttpServletRequest request,@RequestBody String body,
 			@RequestParam (value = "bunkName", defaultValue = "") final String bunkName,
 			@RequestParam (value = "bunkVol", defaultValue = "") final String bunkVol
 			) throws Exception {
 		String responseBody = "";
+		Student stu = JsonHelper.getInstance().read(body, Student.class);
 		Map responseMessage = new HashMap();
 		responseMessage.put("success", true);
 		try{

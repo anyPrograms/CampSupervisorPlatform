@@ -35,7 +35,7 @@ public class LocationService {
      */
     public Location addLocation(String locationName) {
         Location loc = new Location();
-        if (locationDao.findLocationByName(locationName) != null) {
+        if (locationDao.findLocationByName(locationName) == null) {
             loc.setLocationName(locationName);
             Date date = new Date();
             SimpleDateFormat SDF=new SimpleDateFormat("yyyyMMddHHmmss");
