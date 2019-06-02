@@ -17,5 +17,7 @@ public class Bunk {
 	private String bunkName;// bunk名称
 	
 	private String bunkVol;// bunk容量
+	
+	private String existedNum;
 
 }

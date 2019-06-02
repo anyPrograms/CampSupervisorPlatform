@@ -39,6 +39,9 @@ public interface StudentMapper {
 	@Select("SELECT count(*) FROM student WHERE student_bunk !='';")
 	public int countDistributedStudents();
 	
+	@Select("SELECT count(*) FROM student WHERE student_bunk =#{bunkId};")
+	public int countStudentsByBunk(@Param("bunkId")String bunkId);
+	
 	@Select("SELECT * FROM student;")
 	public List<Student> findAllStudents();
 	

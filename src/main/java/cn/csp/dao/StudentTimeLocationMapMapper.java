@@ -28,10 +28,20 @@ public interface StudentTimeLocationMapMapper {
     		"SELECT a.student_id,b.location_id,b.period ,b.date "+
     		"FROM student_elective_schedule_map a, elective_schedule b "+
     		"WHERE a.schedule_id=b.schedule_id;")
-    public void addMap();
+    public void generateMap();
+    
+    @Delete("Delete FROM student_time_location_map WHERE date = #{date};")
+    public void cleanMapByDate(@Param("date")String date);
     
     @Select("SELECT * "+
     		"FROM  student_time_location_map"+
     		"WHERE location_id=#{locationId} AND date = #{date};")
     public List<StudentTimeLocationMap> findMapByLocation(@Param("locationId") String locationId,@Param("date") String date);
+    
+    @Select("SELECT * FROM student_time_location_map WHERE date = #{date};")
+    public List<StudentTimeLocationMap> showMap(@Param("date")String date);
+    
+    
+    @Select("SELECT * FROM student_time_location_map a JOIN student b ON a.student_id = b.student_id WHERE b.student_name LIKE '%${studentName}%' AND b.student_bunk LIKE '%${studentBunk}%' AND a.period LIKE '%${period}%' AND a.date = #{date};")
+    public List<StudentTimeLocationMap> findStudentMapByFilters(@Param("studentName")String studentName,@Param("studentBunk")String studentBunk,@Param("period")String period,@Param("date")String date);
 }
