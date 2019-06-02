@@ -142,7 +142,7 @@ public class StudentController {
     public @ResponseBody
     int countDistributedStudents(Model model,
                                    HttpServletRequest request) throws Exception {
-        return studentService.countUndistributedStudents();
+        return studentService.countDistributedStudents();
     }
     
     @RequestMapping(value = "undistributed", method = RequestMethod.GET)
