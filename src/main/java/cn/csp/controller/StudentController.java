@@ -83,7 +83,8 @@ public class StudentController {
     }
 
     @RequestMapping(value = "deleteStudent/{studentId}", method = RequestMethod.POST)
-    public Object deleteStudent(Model model,
+    public @ResponseBody 
+    Object deleteStudent(Model model,
                                 HttpServletRequest request, @PathVariable String studentId) throws Exception {
         Map responseMessage = new HashMap();
         responseMessage.put("success", true);
@@ -99,7 +100,8 @@ public class StudentController {
     }
 
     @RequestMapping(value = "deleteStudentsByBunk/{bunkId}", method = RequestMethod.POST)
-    public Object deleteStudentsByBunk(Model model,
+    public @ResponseBody 
+    Object deleteStudentsByBunk(Model model,
                                        HttpServletRequest request, @PathVariable String bunkId) throws Exception {
         Map responseMessage = new HashMap();
         responseMessage.put("success", true);
@@ -122,7 +124,8 @@ public class StudentController {
     }
 
     @RequestMapping(value = "findByFilters", method = RequestMethod.GET)
-    public @ResponseBody List<Student> findStudentsByFilters(Model model,HttpServletRequest request,
+    public @ResponseBody 
+    List<Student> findStudentsByFilters(Model model,HttpServletRequest request,
                     @RequestParam(value = "name", defaultValue = "") final String name,
                     @RequestParam(value = "bunk", defaultValue = "") final String bunk,
                     @RequestParam(value = "status", defaultValue = "") final String status
